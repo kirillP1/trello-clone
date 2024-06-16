@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.project-link {
-	@apply text-black font-semibold block px-4 py-2 hover:bg-gray-200 transition-all duration-200;
+@layer components {
+	.project-link {
+		@apply text-black font-semibold flex px-4 pr-3 py-2 hover:bg-gray-200 transition-all duration-200;
+	}
 }
