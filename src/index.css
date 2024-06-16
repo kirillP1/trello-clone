@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.project-link {
+	@apply text-black font-semibold block px-4 py-2 hover:bg-gray-200 transition-all duration-200;
+}
