@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'react'
+import { FiPlus } from 'react-icons/fi'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { IKanbanCol } from '../../../@types/IKanbanCol'
@@ -20,6 +21,12 @@ const KanbanBoard: FunctionComponent<KanbanBoardProps> = () => {
 				{kanbanCols.map((kanbanCol: IKanbanCol) => (
 					<KanbanCol key={kanbanCol.id} {...kanbanCol} />
 				))}
+				<div className=' mr-5 w-72 whitespace-normal'>
+					<button className='bg-gray-200 text-black font-semibold w-full flex items-center py-3 px-3 rounded-md'>
+						<FiPlus className='mr-1' />
+						Add another column
+					</button>
+				</div>
 			</div>
 		</div>
 	)
