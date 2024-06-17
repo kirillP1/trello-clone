@@ -1,8 +1,8 @@
 import { RefObject, useEffect, useState } from 'react'
 
 export const useBeyondClick = (
-	showForm: boolean,
-	setShowForm: (arg: boolean) => void,
+	show: boolean,
+	setShow: (arg: boolean) => void,
 	formRef: RefObject<HTMLElement>
 ) => {
 	const [flag, setFlag] = useState<boolean>(false)
@@ -13,11 +13,11 @@ export const useBeyondClick = (
 				setFlag(true)
 			} else {
 				if (
-					showForm &&
+					show &&
 					formRef.current &&
 					!formRef.current.contains(e.target as Node)
 				) {
-					setShowForm(false)
+					setShow(false)
 				}
 			}
 		}

@@ -1,11 +1,16 @@
 import { FunctionComponent } from 'react'
 import { FiPlus } from 'react-icons/fi'
 
-interface TaskAddButtonProps {}
+interface TaskAddButtonProps {
+	setShow: (arg: boolean) => void
+}
 
-const TaskAddButton: FunctionComponent<TaskAddButtonProps> = () => {
+const TaskAddButton: FunctionComponent<TaskAddButtonProps> = ({ setShow }) => {
 	return (
-		<button className='rounded-lg py-1 px-2  bg-gray-100 font-semibold text-gray-600 flex items-center w-full'>
+		<button
+			onClick={() => setShow(true)}
+			className='rounded-lg py-1 px-2  bg-gray-100 font-semibold text-gray-600 flex items-center w-full'
+		>
 			<FiPlus className='mr-1' />
 			New card
 		</button>

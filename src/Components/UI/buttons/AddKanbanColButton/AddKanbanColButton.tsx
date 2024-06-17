@@ -11,7 +11,7 @@ const AddKanbanColButton: FunctionComponent<AddKanbanColButtonProps> = ({
 	return (
 		<button
 			onClick={() => onClickHandler(true)}
-			className='bg-gray-200 text-black font-semibold w-full flex items-center py-3 px-3 rounded-md'
+			className='bg-gray-200 text-black font-semibold w-full flex items-center py-2 px-3 rounded-md text-sm'
 		>
 			<FiPlus className='mr-1' />
 			Add another column

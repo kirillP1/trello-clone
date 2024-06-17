@@ -1,17 +1,21 @@
 import { FunctionComponent } from 'react'
 import { IoMdClose } from 'react-icons/io'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { IKanbanCol } from '../../../@types/IKanbanCol'
 import { deleteKanbanCol } from '../../../redux/slices/kanbanCols.slice'
-import TaskAddButton from '../../UI/buttons/TaskAddButton/TaskAddButton'
+import { AppDispatch, RootState } from '../../../redux/store'
+import AddCard from '../AddCard/AddCard'
 import CanbanStep from '../CanbanStep/CanbanStep'
-import CanbanTask from '../CanbanTask/CanbanTask'
+import Card from '../Card/Card'
 
 const KanbanCol: FunctionComponent<IKanbanCol> = ({ id, name }) => {
-	const dispatch = useDispatch()
+	const dispatch = useDispatch<AppDispatch>()
+	const cards = useSelector((state: RootState) => state.cards.cards).filter(
+		card => card.kanbanColId === id
+	)
 
 	return (
-		<div className=' mr-5 w-72 whitespace-normal'>
+		<div className=' mr-5 w-72 whitespace-normal '>
 			<div className='flex justify-between'>
 				<CanbanStep name={name} />
 				<IoMdClose
@@ -20,12 +24,11 @@ const KanbanCol: FunctionComponent<IKanbanCol> = ({ id, name }) => {
 				/>
 			</div>
 			<div className='tasksList'>
-				<CanbanTask />
-				<CanbanTask />
-				<CanbanTask />
-				<CanbanTask />
+				{cards.map(card => (
+					<Card {...card} />
+				))}
 			</div>
-			<TaskAddButton />
+			<AddCard kanbanColId={id} />
 		</div>
 	)
 }

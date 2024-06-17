@@ -1,5 +1,5 @@
 export interface ICard {
 	id: number
-	title: string
+	name: string
 	kanbanColId: number
 }
