@@ -24,7 +24,7 @@ export const kanbanColsSlice = createSlice({
 		},
 		deleteKanbanCol: (state, action: PayloadAction<number>) => {
 			state.kanbanCols = state.kanbanCols.filter(
-				project => project.id !== action.payload
+				kanbanCol => kanbanCol.id !== action.payload
 			)
 			localStorage.setItem('kanbanCols', JSON.stringify(state.kanbanCols))
 		},
