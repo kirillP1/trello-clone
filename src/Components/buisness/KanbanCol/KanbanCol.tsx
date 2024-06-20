@@ -38,7 +38,7 @@ const KanbanCol: FunctionComponent<KanbanColProps> = ({
 	return (
 		<div
 			ref={colRef}
-			className=' mr-5 w-72 whitespace-normal h-fit p-2 rounded-md transition-all duration-200 hover:cursor-pointer'
+			className=' mr-5 w-72 whitespace-normal h-fit p-2 bg-white rounded-md transition-all duration-200 hover:cursor-pointer'
 			data-name='col'
 			draggable={true}
 			onDragStart={e => colDragStartHandler(e, col, setCurrentCol)}
