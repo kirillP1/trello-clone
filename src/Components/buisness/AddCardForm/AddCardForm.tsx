@@ -4,7 +4,7 @@ import { IoMdClose } from 'react-icons/io'
 import { useDispatch } from 'react-redux'
 import { ICard } from '../../../@types/ICard'
 import { useBeyondClick } from '../../../hooks/useBeyondClick'
-import { addCard } from '../../../redux/slices/cards.slice'
+import { addCardToCol } from '../../../redux/slices/kanbanCols.slice'
 import { AppDispatch } from '../../../redux/store'
 import SmBlueButton from '../../UI/buttons/SmBlueButton/SmBlueButton'
 
@@ -35,7 +35,7 @@ const AddCardForm: FunctionComponent<AddCardFormProps> = ({
 	const onSubmit: SubmitHandler<ICard> = data => {
 		setShow(false)
 		reset()
-		dispatch(addCard({ ...data, kanbanColId: Number(kanbanColId) }))
+		dispatch(addCardToCol({ ...data, kanbanColId: Number(kanbanColId) }))
 	}
 
 	return (

@@ -3,14 +3,12 @@ import CreateProjectModal from './Components/UI/modals/CreateProjectModal/Create
 import Project from './Components/buisness/Project/Project'
 import Projects from './Components/buisness/Projects/Projects'
 import SideBar from './Components/buisness/SideBar/SideBar'
-import { useGetCards } from './hooks/useGetCards'
 import { useGetKanbanCols } from './hooks/useGetKanbanCols'
 import { useGetProjects } from './hooks/useGetProjects'
 
 function App() {
 	useGetProjects()
 	useGetKanbanCols()
-	useGetCards()
 
 	return (
 		<div className='App flex h-screen'>

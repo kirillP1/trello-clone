@@ -1,6 +1,5 @@
 import { FunctionComponent } from 'react'
 import { useParams } from 'react-router-dom'
-import SmBlueButton from '../../UI/buttons/SmBlueButton/SmBlueButton'
 
 interface ProjectHeaderProps {}
 
@@ -16,9 +15,7 @@ const ProjectHeader: FunctionComponent<ProjectHeaderProps> = () => {
 			<div className='flex w-full justify-between items-center'>
 				<h1 className='text-4xl font-bold'>{params.id}: Case Study</h1>
 
-				<div>
-					<SmBlueButton>New Card</SmBlueButton>
-				</div>
+				<div>{/*<SmBlueButton>New Card</SmBlueButton>*/}</div>
 			</div>
 		</header>
 	)
