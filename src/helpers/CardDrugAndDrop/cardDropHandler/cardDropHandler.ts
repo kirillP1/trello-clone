@@ -106,7 +106,9 @@ function setCardToTargetCol(
 	col: IKanbanCol,
 	dispatch: AppDispatch
 ): void {
-	targetCards.splice(dropIndex + 1, 0, currentCard)
+	const copyCurrentCard = { ...currentCard }
+	copyCurrentCard.kanbanColId = col.id
+	targetCards.splice(dropIndex + 1, 0, copyCurrentCard)
 
 	dispatch(
 		setKanbanCols(

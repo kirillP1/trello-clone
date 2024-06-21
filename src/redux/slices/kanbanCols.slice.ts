@@ -33,20 +33,64 @@ export const kanbanColsSlice = createSlice({
 		},
 		addCardToCol: (state, action: PayloadAction<ICard>) => {
 			action.payload.id = new Date().getTime()
+			action.payload.desc = ''
 
 			const changedCol = state.kanbanCols.find(
 				col => col.id === action.payload.kanbanColId
 			) as IKanbanCol
-			delete action.payload.kanbanColId
 
 			changedCol.cards.push(action.payload)
+			localStorage.setItem('kanbanCols', JSON.stringify(state.kanbanCols))
+		},
+		deleteCardFromCol: (state, action: PayloadAction<ICard>) => {
+			const changedCol = state.kanbanCols.find(
+				col => col.id === action.payload.kanbanColId
+			) as IKanbanCol
+
+			changedCol.cards = changedCol.cards.filter(
+				card => card.id !== action.payload.id
+			)
+
+			localStorage.setItem('kanbanCols', JSON.stringify(state.kanbanCols))
+		},
+		changeCardFromCol: (state, action: PayloadAction<ICard>) => {
+			const changedCol = state.kanbanCols.find(
+				col => col.id === action.payload.kanbanColId
+			) as IKanbanCol
+
+			if (action.payload.name === '') action.payload.name = 'Without name'
+
+			changedCol.cards = changedCol.cards.map(card => {
+				if (card.id === action.payload.id) {
+					return action.payload
+				}
+				return card
+			})
+
+			localStorage.setItem('kanbanCols', JSON.stringify(state.kanbanCols))
+		},
+		changeCol: (state, action: PayloadAction<IKanbanCol>) => {
+			state.kanbanCols = state.kanbanCols.map(col => {
+				if (col.id === action.payload.id) {
+					return action.payload
+				}
+				return col
+			})
+
 			localStorage.setItem('kanbanCols', JSON.stringify(state.kanbanCols))
 		},
 	},
 })
 
 // Action creators are generated for each case reducer function
-export const { setKanbanCols, addKanbanCol, deleteKanbanCol, addCardToCol } =
-	kanbanColsSlice.actions
+export const {
+	setKanbanCols,
+	addKanbanCol,
+	deleteKanbanCol,
+	addCardToCol,
+	deleteCardFromCol,
+	changeCardFromCol,
+	changeCol,
+} = kanbanColsSlice.actions
 
 export default kanbanColsSlice.reducer

@@ -3,33 +3,24 @@ import { createSlice } from '@reduxjs/toolkit'
 import { ICard } from '../../@types/ICard'
 
 export interface cardsState {
-	cards: ICard[]
+	currentModalCard: ICard | null
 }
 
 const initialState: cardsState = {
-	cards: [],
+	currentModalCard: null,
 }
 
 export const cardsSlice = createSlice({
 	name: 'cards',
 	initialState,
 	reducers: {
-		setCards: (state, action: PayloadAction<ICard[]>) => {
-			state.cards = action.payload
-		},
-		addCard: (state, action: PayloadAction<ICard>) => {
-			action.payload.id = new Date().getTime()
-			state.cards.push(action.payload)
-			localStorage.setItem('cards', JSON.stringify(state.cards))
-		},
-		deleteCard: (state, action: PayloadAction<number>) => {
-			state.cards = state.cards.filter(card => card.id !== action.payload)
-			localStorage.setItem('cards', JSON.stringify(state.cards))
+		setCurrentModalCard: (state, action: PayloadAction<ICard | null>) => {
+			state.currentModalCard = action.payload
 		},
 	},
 })
 
 // Action creators are generated for each case reducer function
-export const { setCards, addCard, deleteCard } = cardsSlice.actions
+export const { setCurrentModalCard } = cardsSlice.actions
 
 export default cardsSlice.reducer

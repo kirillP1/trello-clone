@@ -12,11 +12,9 @@ const ProjectsNav: FunctionComponent<ProjectsNavProps> = () => {
 	const projects = useSelector((state: RootState) => state.projects.projects)
 	const dispatch = useDispatch<AppDispatch>()
 
-	console.log('projects', projects)
 	const closeHandler = (e: React.MouseEvent<SVGElement>, projectId: number) => {
 		e.stopPropagation()
 		e.preventDefault()
-		console.log(projectId)
 		dispatch(deleteProject(projectId))
 	}
 	return (

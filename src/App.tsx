@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
+import CardModal from './Components/UI/modals/CardModal/CardModal'
 import CreateProjectModal from './Components/UI/modals/CreateProjectModal/CreateProjectModal'
 import Project from './Components/buisness/Project/Project'
 import Projects from './Components/buisness/Projects/Projects'
@@ -21,6 +22,7 @@ function App() {
 			</div>
 
 			<CreateProjectModal />
+			<CardModal />
 		</div>
 	)
 }

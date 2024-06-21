@@ -60,7 +60,7 @@ const KanbanCol: FunctionComponent<KanbanColProps> = ({
 			}
 		>
 			<div className='flex justify-between'>
-				<CanbanStep name={col.name} />
+				<CanbanStep col={col} />
 				<IoMdClose
 					onClick={() => dispatch(deleteKanbanCol(Number(col.id)))}
 					className='text-gray-600 text-2xl transition-all duration-200 hover:cursor-pointer hover:text-black hover:scale-110'

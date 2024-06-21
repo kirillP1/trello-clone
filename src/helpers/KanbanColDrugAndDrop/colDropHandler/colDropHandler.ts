@@ -71,7 +71,10 @@ function dropCardToEmptyCol(
 
 	const targetCards = [...col.cards]
 
-	targetCards.push(currentCard)
+	const copyCurrentCard = { ...currentCard }
+	copyCurrentCard.kanbanColId = col.id
+
+	targetCards.push(copyCurrentCard)
 
 	// Создаем копию массива cards текущей колонки
 	const currentCards = [...currentCol.cards]

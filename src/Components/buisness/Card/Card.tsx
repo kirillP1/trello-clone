@@ -7,6 +7,8 @@ import { cardDragLeaveHandler } from '../../../helpers/CardDrugAndDrop/cardDragL
 import { cardDragOverHandler } from '../../../helpers/CardDrugAndDrop/cardDragOverHandler/cardDragOverHandler'
 import { cardDragStartHandler } from '../../../helpers/CardDrugAndDrop/cardDragStartHandler/cardDragStartHandler'
 import { cardDropHandler } from '../../../helpers/CardDrugAndDrop/cardDropHandler/cardDropHandler'
+import { setCurrentModalCard } from '../../../redux/slices/cards.slice'
+import { setCardModal } from '../../../redux/slices/modals.slice'
 import { AppDispatch, RootState } from '../../../redux/store'
 
 interface CardProps {
@@ -32,6 +34,11 @@ const Card: FunctionComponent<CardProps> = ({
 		(state: RootState) => state.kanbanCols.kanbanCols
 	)
 
+	function cardClickHandler() {
+		dispatch(setCardModal(true))
+		dispatch(setCurrentModalCard(card))
+	}
+
 	return (
 		<div
 			draggable={true}
@@ -50,6 +57,7 @@ const Card: FunctionComponent<CardProps> = ({
 					{ card, currentCard }
 				)
 			}
+			onClick={() => cardClickHandler()}
 			data-name='card'
 			className='card p-4 font-semibold border-solid border-gray-200 border-2 transition-all duration-200 rounded-md mb-2 shadow-md shadow-gray-200 hover:border-blue-300 hover:shadow-blue-200'
 		>

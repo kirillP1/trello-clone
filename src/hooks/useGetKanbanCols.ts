@@ -16,15 +16,27 @@ export const useGetKanbanCols = () => {
 						name: 'Planning',
 						projectId: 1,
 						cards: [
-							{ id: 1, name: 'Stydy Math' },
-							{ id: 2, name: 'Study Philosophy' },
+							{
+								id: 1,
+								name: 'Stydy Math',
+								kanbanColId: 1,
+								desc: 'Lorem indsad gasga agsa gasgas gasga',
+							},
+							{ id: 2, name: 'Study Philosophy', kanbanColId: 1, desc: '' },
 						],
 					},
 					{
 						id: 2,
 						name: 'Doing',
 						projectId: 1,
-						cards: [{ id: 3, name: 'Study JavaScript' }],
+						cards: [
+							{
+								id: 3,
+								name: 'Study JavaScript',
+								kanbanColId: 2,
+								desc: 'dsadasdasdasdasd dasda',
+							},
+						],
 					},
 				])
 			)
