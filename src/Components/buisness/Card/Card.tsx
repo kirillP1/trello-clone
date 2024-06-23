@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react'
+import { FunctionComponent, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ICard } from '../../../@types/ICard'
 import { IKanbanCol } from '../../../@types/IKanbanCol'
@@ -34,6 +34,8 @@ const Card: FunctionComponent<CardProps> = ({
 		(state: RootState) => state.kanbanCols.kanbanCols
 	)
 
+	const cardRef = useRef<HTMLDivElement>(null)
+
 	function cardClickHandler() {
 		dispatch(setCardModal(true))
 		dispatch(setCurrentModalCard(card))
@@ -43,10 +45,19 @@ const Card: FunctionComponent<CardProps> = ({
 		<div
 			draggable={true}
 			onDragStart={e =>
-				cardDragStartHandler(e, card, col, setCurrentCard, setCurrentCol)
+				cardDragStartHandler(
+					e,
+					card,
+					col,
+					setCurrentCard,
+					setCurrentCol,
+					cardRef
+				)
 			}
 			onDragLeave={e => cardDragLeaveHandler(e)}
-			onDragEnd={e => cardDragEndHandler(e, setCurrentCard, setCurrentCol)}
+			onDragEnd={e =>
+				cardDragEndHandler(e, setCurrentCard, setCurrentCol, cardRef)
+			}
 			onDragOver={e => cardDragOverHandler(e, currentCard)}
 			onDrop={e =>
 				cardDropHandler(
@@ -54,12 +65,13 @@ const Card: FunctionComponent<CardProps> = ({
 					dispatch,
 					{ col, currentCol },
 					{ kanbanCols },
-					{ card, currentCard }
+					{ card, currentCard, setCurrentCard }
 				)
 			}
 			onClick={() => cardClickHandler()}
 			data-name='card'
 			className='card p-4 font-semibold border-solid border-gray-200 border-2 transition-all duration-200 rounded-md mb-2 shadow-md shadow-gray-200 hover:border-blue-300 hover:shadow-blue-200'
+			ref={cardRef}
 		>
 			{card.name}
 		</div>

@@ -11,7 +11,8 @@ export function colDropHandler(
 	currentCard: ICard | null,
 	kanbanCols: IKanbanCol[],
 	colRef: RefObject<HTMLElement>,
-	dispatch: AppDispatch
+	dispatch: AppDispatch,
+	setCurrentCard: (card: ICard | null) => void
 ) {
 	e.preventDefault()
 
@@ -31,6 +32,8 @@ export function colDropHandler(
 	) {
 		dropCardToEmptyCol(currentCol, currentCard, col, dispatch, kanbanCols)
 	}
+
+	setCurrentCard(null)
 }
 
 function removeColRefStyles(colRef: RefObject<HTMLElement>) {

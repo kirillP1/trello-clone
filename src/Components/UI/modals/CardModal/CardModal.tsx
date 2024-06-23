@@ -35,7 +35,7 @@ const CardModal: FunctionComponent<CardModalProps> = () => {
 		currentModalCard &&
 		createPortal(
 			<div
-				className='bg-black/70 fixed inset-0 flex justify-center items-center'
+				className='bg-black/70 fixed inset-0 flex justify-center items-center z-50'
 				onClick={() => closeCardModalHandler()}
 			>
 				<div

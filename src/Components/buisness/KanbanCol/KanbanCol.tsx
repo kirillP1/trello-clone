@@ -41,7 +41,9 @@ const KanbanCol: FunctionComponent<KanbanColProps> = ({
 			className=' mr-5 w-72 whitespace-normal h-fit p-2 bg-white rounded-md transition-all duration-200 hover:cursor-pointer'
 			data-name='col'
 			draggable={true}
-			onDragStart={e => colDragStartHandler(e, col, setCurrentCol)}
+			onDragStart={e =>
+				colDragStartHandler(e, col, setCurrentCol, currentCard, colRef)
+			}
 			onDragLeave={e => colDragLeaveHandler(e, colRef)}
 			onDragEnd={e =>
 				colDragEndHandler(e, colRef, setCurrentCol, setCurrentCard)
@@ -55,7 +57,8 @@ const KanbanCol: FunctionComponent<KanbanColProps> = ({
 					currentCard,
 					kanbanCols,
 					colRef,
-					dispatch
+					dispatch,
+					setCurrentCard
 				)
 			}
 		>

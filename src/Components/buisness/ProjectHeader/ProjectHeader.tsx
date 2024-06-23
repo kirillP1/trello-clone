@@ -1,21 +1,27 @@
 import { FunctionComponent } from 'react'
+import { AiFillProject } from 'react-icons/ai'
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { RootState } from '../../../redux/store'
 
 interface ProjectHeaderProps {}
 
-interface ProjectParams {
-	id: string
-	[name: string]: string
-}
-
 const ProjectHeader: FunctionComponent<ProjectHeaderProps> = () => {
-	const params = useParams<ProjectParams>()
-	return (
-		<header className='p-10 border-solid border-gray-200 border-b-2'>
-			<div className='flex w-full justify-between items-center'>
-				<h1 className='text-4xl font-bold'>{params.id}: Case Study</h1>
+	const { projectId } = useParams()
 
-				<div>{/*<SmBlueButton>New Card</SmBlueButton>*/}</div>
+	const currentProject = useSelector((state: RootState) =>
+		state.projects.projects.find(project => project.id === Number(projectId))
+	)
+
+	return (
+		<header className='py-10 border-solid border-gray-200 border-b-2 z-10 relative'>
+			<div className='flex w-full justify-between items-center z-10 relative'>
+				<h1 className='text-4xl font-bold text-gray-700'>
+					<AiFillProject className='mr-2 -mt-1 inline-block' />
+					{currentProject && currentProject.name}
+				</h1>
+
+				<div></div>
 			</div>
 		</header>
 	)

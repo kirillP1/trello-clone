@@ -14,7 +14,7 @@ export const useGetKanbanCols = () => {
 					{
 						id: 1,
 						name: 'Planning',
-						projectId: 1,
+						boardId: 1,
 						cards: [
 							{
 								id: 1,
@@ -28,7 +28,7 @@ export const useGetKanbanCols = () => {
 					{
 						id: 2,
 						name: 'Doing',
-						projectId: 1,
+						boardId: 1,
 						cards: [
 							{
 								id: 3,

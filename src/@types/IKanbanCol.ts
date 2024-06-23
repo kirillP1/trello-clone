@@ -3,6 +3,6 @@ import { ICard } from './ICard'
 export interface IKanbanCol {
 	id: number
 	name: string
-	projectId: number
+	boardId: number
 	cards: ICard[]
 }

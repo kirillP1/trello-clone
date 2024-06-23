@@ -27,7 +27,7 @@ const CreateProjectForm: FunctionComponent<CreateProjectFormProps> = () => {
 		<form onSubmit={handleSubmit(onSubmit)} className='w-3/4'>
 			<input
 				type='text'
-				placeholder='Введите название проекта...'
+				placeholder='Enter project name...'
 				{...register('name')}
 				className='bg-gray-100 px-4 py-2 block w-full rounded-sm mb-4'
 			/>
@@ -36,7 +36,7 @@ const CreateProjectForm: FunctionComponent<CreateProjectFormProps> = () => {
 				type='submit'
 				className='border-blue-600 border-2 w-full text-semibold border-slid bg-blue-600 text-white rounded-sm py-1 px-2 hover:bg-white hover:text-blue-600 transition-all duration-200'
 			>
-				Создать проект
+				Create project
 			</button>
 		</form>
 	)

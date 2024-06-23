@@ -20,7 +20,7 @@ const AddKanbanColForm: FunctionComponent<AddKanbanColFormProps> = ({
 }) => {
 	const formRef = useRef<HTMLFormElement>(null)
 
-	const { id } = useParams()
+	const { boardId } = useParams()
 	const dispatch = useDispatch<AppDispatch>()
 
 	useBeyondClick(showForm, setShowForm, formRef)
@@ -35,7 +35,7 @@ const AddKanbanColForm: FunctionComponent<AddKanbanColFormProps> = ({
 	const onSubmit: SubmitHandler<IKanbanCol> = data => {
 		setShowForm(false)
 		reset()
-		dispatch(addKanbanCol({ ...data, projectId: Number(id) }))
+		dispatch(addKanbanCol({ ...data, boardId: Number(boardId) }))
 	}
 
 	return (

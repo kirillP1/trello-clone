@@ -11,8 +11,8 @@ export const useGetProjects = () => {
 			localStorage.setItem(
 				'projects',
 				JSON.stringify([
-					{ id: 1, name: 'Study project' },
-					{ id: 2, name: 'Programming project' },
+					{ id: 1, name: 'First project' },
+					{ id: 2, name: 'Second project' },
 				])
 			)
 		}

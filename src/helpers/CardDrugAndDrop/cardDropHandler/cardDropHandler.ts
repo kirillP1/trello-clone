@@ -11,6 +11,7 @@ interface IColParams {
 interface ICardParams {
 	card: ICard
 	currentCard: ICard | null
+	setCurrentCard: (card: ICard | null) => void
 }
 
 interface IKanbanColParams {
@@ -22,7 +23,7 @@ export function cardDropHandler(
 	dispatch: AppDispatch,
 	{ col, currentCol }: IColParams,
 	{ kanbanCols }: IKanbanColParams,
-	{ card, currentCard }: ICardParams
+	{ card, currentCard, setCurrentCard }: ICardParams
 ) {
 	e.preventDefault()
 	if (!currentCard || !currentCol) {
@@ -59,6 +60,8 @@ export function cardDropHandler(
 			dispatch
 		)
 	}
+
+	setCurrentCard(null)
 }
 
 function deleteTargetStyles(e: React.DragEvent<HTMLDivElement>) {

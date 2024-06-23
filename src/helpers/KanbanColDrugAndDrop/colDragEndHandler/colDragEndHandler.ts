@@ -12,8 +12,7 @@ export function colDragEndHandler(
 	target.classList.remove('shadow-gray-400')
 	target.classList.remove('shadow-md')
 
-	colRef.current!.classList.remove('shadow-md')
-	colRef.current!.classList.remove('shadow-gray-400')
+	colRef.current?.classList.remove('opacity-30')
 
 	setCurrentCol(null)
 	setCurrentCard(null)

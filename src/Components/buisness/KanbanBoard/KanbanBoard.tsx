@@ -10,29 +10,31 @@ import KanbanCol from '../KanbanCol/KanbanCol'
 interface KanbanBoardProps {}
 
 const KanbanBoard: FunctionComponent<KanbanBoardProps> = () => {
-	const { id } = useParams()
+	const { boardId } = useParams()
 
 	const kanbanCols = useSelector(
 		(state: RootState) => state.kanbanCols.kanbanCols
-	).filter(kanbanCol => kanbanCol.projectId === Number(id))
+	).filter(kanbanCol => kanbanCol.boardId === Number(boardId))
 
 	const [currentCol, setCurrentCol] = useState<IKanbanCol | null>(null)
 	const [currentCard, setCurrentCard] = useState<ICard | null>(null)
 
 	return (
-		<div className='p-10 whitespace-nowrap overflow-x-auto relative flex-1'>
-			<div className='absolute flex flex-nowrap pb-10'>
-				{kanbanCols.map((kanbanCol: IKanbanCol) => (
-					<KanbanCol
-						key={kanbanCol.id}
-						col={kanbanCol}
-						currentCol={currentCol}
-						setCurrentCol={setCurrentCol}
-						currentCard={currentCard}
-						setCurrentCard={setCurrentCard}
-					/>
-				))}
-				<AddKanbanCol />
+		<div className=' relative flex-1'>
+			<div className='whitespace-nowrap overflow-x-scroll relative h-full w-full p-10 '>
+				<div className='absolute flex flex-nowrap pb-10'>
+					{kanbanCols.map((kanbanCol: IKanbanCol) => (
+						<KanbanCol
+							key={kanbanCol.id}
+							col={kanbanCol}
+							currentCol={currentCol}
+							setCurrentCol={setCurrentCol}
+							currentCard={currentCard}
+							setCurrentCard={setCurrentCard}
+						/>
+					))}
+					<AddKanbanCol />
+				</div>
 			</div>
 		</div>
 	)

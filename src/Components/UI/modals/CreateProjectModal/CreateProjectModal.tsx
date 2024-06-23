@@ -22,7 +22,7 @@ const CreateProjectModal: FunctionComponent<CreateProjectModalProps> = () => {
 		createProjectModal &&
 		createPortal(
 			<div
-				className='bg-black/70 fixed inset-0 flex justify-center items-center'
+				className='bg-black/70 fixed inset-0 flex justify-center items-center z-50'
 				onClick={() => dispatch(setCreateProjectModal(false))}
 			>
 				<div

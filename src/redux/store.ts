@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+import boardsSlice from './slices/boards.slice'
 import cardsSlice from './slices/cards.slice'
 import kanbanColsSlice from './slices/kanbanCols.slice'
 import modalsSlice from './slices/modals.slice'
@@ -6,10 +7,11 @@ import projectsSlice from './slices/projects.slice'
 
 export const store = configureStore({
 	reducer: {
-		projects: projectsSlice,
+		boards: boardsSlice,
 		modals: modalsSlice,
 		kanbanCols: kanbanColsSlice,
 		cards: cardsSlice,
+		projects: projectsSlice,
 	},
 })
 
