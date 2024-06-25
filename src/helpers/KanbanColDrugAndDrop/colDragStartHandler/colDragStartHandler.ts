@@ -1,12 +1,11 @@
 import { RefObject } from 'react'
-import { ICard } from '../../../@types/ICard'
 import { IKanbanCol } from '../../../@types/IKanbanCol'
 
 export function colDragStartHandler(
 	e: React.DragEvent<HTMLDivElement>,
 	col: IKanbanCol,
 	setCurrentCol: (col: IKanbanCol) => void,
-	currentCard: ICard | null,
+	//currentCard: ICard | null,
 	colRef: RefObject<HTMLDivElement>
 ) {
 	const target = e.target as HTMLDivElement

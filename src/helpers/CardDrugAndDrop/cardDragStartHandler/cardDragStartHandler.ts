@@ -3,7 +3,7 @@ import { ICard } from '../../../@types/ICard'
 import { IKanbanCol } from '../../../@types/IKanbanCol'
 
 export function cardDragStartHandler(
-	e: React.DragEvent<HTMLDivElement>,
+	//e: React.DragEvent<HTMLDivElement>,
 	card: ICard,
 	col: IKanbanCol,
 	setCurrentCard: (col: ICard | null) => void,
