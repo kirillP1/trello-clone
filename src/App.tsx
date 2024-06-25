@@ -1,33 +1,28 @@
-import { Route, Routes } from 'react-router-dom'
 import CardModal from './Components/UI/modals/CardModal/CardModal'
 import CreateBoardModal from './Components/UI/modals/CreateBoardModal/CreateBoardModal'
 import CreateProjectModal from './Components/UI/modals/CreateProjectModal/CreateProjectModal'
-import Board from './Components/buisness/Board/Board'
 import Header from './Components/buisness/Header/Header'
 import SideBar from './Components/buisness/SideBar/SideBar'
+import MainRoutes from './Routes/MainRoutes/MainRoutes'
 import { useGetBoards } from './hooks/useGetBoards'
 import { useGetKanbanCols } from './hooks/useGetKanbanCols'
 import { useGetProjects } from './hooks/useGetProjects'
-import Home from './pages/Home/Home'
-import ProjectPage from './pages/ProjectPage/ProjectPage'
+import { useMobile } from './hooks/useMobile'
 
 function App() {
 	useGetBoards()
 	useGetKanbanCols()
 	useGetProjects()
+	useMobile()
 
 	return (
 		<>
 			<div className='App flex flex-col h-screen'>
 				<Header />
-				<div className='flex-1 flex'>
+				<div className='flex-1 flex relative'>
 					<SideBar />
 					<div className='flex-1'>
-						<Routes>
-							<Route path='/' element={<Home />} />
-							<Route path='/project/:projectId' element={<ProjectPage />} />
-							<Route path='/board/:boardId' element={<Board />} />
-						</Routes>
+						<MainRoutes />
 					</div>
 				</div>
 			</div>

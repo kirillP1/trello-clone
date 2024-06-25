@@ -1,19 +1,20 @@
-import { FunctionComponent } from 'react'
-import { IoMdClose } from 'react-icons/io'
+import { FunctionComponent, useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { IBoard } from '../../../@types/IBoard'
 import { deleteBoard } from '../../../redux/slices/boards.slice'
 import { AppDispatch, RootState } from '../../../redux/store'
+import BoardLink from '../../UI/links/BoardLink/BoardLink'
 
 interface BoardsNavProps {}
 
 const BoardsNav: FunctionComponent<BoardsNavProps> = () => {
 	const { boardId } = useParams()
+	const memoBoardId = useMemo(() => boardId, [boardId])
 	const navigate = useNavigate()
 
 	const currentBoard = useSelector((state: RootState) =>
-		state.boards.boards.find(board => board.id === Number(boardId))
+		state.boards.boards.find(board => board.id === Number(memoBoardId))
 	)
 
 	const boards = useSelector((state: RootState) =>
@@ -23,37 +24,32 @@ const BoardsNav: FunctionComponent<BoardsNavProps> = () => {
 	)
 	const dispatch = useDispatch<AppDispatch>()
 
-	const closeHandler = (
-		e: React.MouseEvent<SVGElement>,
-		deleteBoardId: number
-	) => {
-		e.stopPropagation()
-		e.preventDefault()
+	const closeHandler = useCallback(
+		(e: React.MouseEvent<SVGElement>, deleteBoardId: number) => {
+			console.log('closeHandler')
+			e.stopPropagation()
+			e.preventDefault()
 
-		const deletedBoardProjectId = currentBoard?.projectId
+			const deletedBoardProjectId = currentBoard?.projectId
 
-		dispatch(deleteBoard(deleteBoardId))
+			dispatch(deleteBoard(deleteBoardId))
 
-		if (deleteBoardId === Number(boardId)) {
-			navigate(`/project/${deletedBoardProjectId}`)
-		}
-	}
+			if (deleteBoardId === Number(memoBoardId)) {
+				navigate(`/project/${deletedBoardProjectId}`)
+			}
+		},
+		[currentBoard, dispatch, memoBoardId, navigate]
+	)
+
 	return (
 		<nav>
 			{boards.map((board: IBoard) => (
-				<NavLink
-					to={`/board/${board.id}`}
-					className='sidebar-link flex justify-between'
+				<BoardLink
 					key={board.id}
-				>
-					<div className='inline-block'>
-						<span></span> {board.name}
-					</div>
-					<IoMdClose
-						className='text-2xl transition-all duration-200 text-gray-500 hover:cursor-pointer hover:text-black hover:scale-110'
-						onClick={e => closeHandler(e, board.id)}
-					/>
-				</NavLink>
+					boardId={board.id}
+					boardName={board.name}
+					closeHandler={closeHandler}
+				/>
 			))}
 		</nav>
 	)

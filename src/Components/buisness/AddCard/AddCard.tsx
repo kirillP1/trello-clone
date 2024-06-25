@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from 'react'
+import { FunctionComponent, memo, useState } from 'react'
 import TaskAddButton from '../../UI/buttons/TaskAddButton/TaskAddButton'
 import AddCardForm from '../AddCardForm/AddCardForm'
 
@@ -6,7 +6,7 @@ interface AddCardProps {
 	kanbanColId: number
 }
 
-const AddCard: FunctionComponent<AddCardProps> = ({ kanbanColId }) => {
+const AddCard: FunctionComponent<AddCardProps> = memo(({ kanbanColId }) => {
 	const [show, setShow] = useState<boolean>(false)
 	return (
 		<div className='relative'>
@@ -16,6 +16,6 @@ const AddCard: FunctionComponent<AddCardProps> = ({ kanbanColId }) => {
 			<TaskAddButton setShow={setShow} />
 		</div>
 	)
-}
+})
 
 export default AddCard

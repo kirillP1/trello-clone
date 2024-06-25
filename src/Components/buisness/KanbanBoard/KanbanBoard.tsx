@@ -21,7 +21,7 @@ const KanbanBoard: FunctionComponent<KanbanBoardProps> = () => {
 
 	return (
 		<div className=' relative flex-1'>
-			<div className='whitespace-nowrap overflow-x-scroll relative h-full w-full p-10 '>
+			<div className='whitespace-nowrap overflow-x-scroll relative h-full w-full p-5 xl:p-10 '>
 				<div className='absolute flex flex-nowrap pb-10'>
 					{kanbanCols.map((kanbanCol: IKanbanCol) => (
 						<KanbanCol

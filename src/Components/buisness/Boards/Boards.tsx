@@ -6,7 +6,7 @@ interface BoardsProps {}
 
 const Boards: FunctionComponent<BoardsProps> = () => {
 	return (
-		<div className='bg-gray-100 h-full border-solid border-r-gray-200 border-r-2 w-72'>
+		<div className='bg-gray-100 h-full border-solid border-r-gray-200 border-r-2 '>
 			<AddBoardButton />
 			<BoardsNav />
 		</div>

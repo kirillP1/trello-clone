@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 export const fetchImageById = async (
-	imageId: string
+	imageId: string,
+	size: string
 ): Promise<string | undefined> => {
 	try {
 		const response = await axios.get(
@@ -10,7 +11,7 @@ export const fetchImageById = async (
 				'?client_id=6LuDJkfli8IQ4C_L5eEn0TV5SCtc__5dw7OoynclTZY'
 		)
 
-		return response.data.urls.full
+		return response.data.urls[size]
 	} catch (error) {
 		console.error('Error fetching image by id:', error)
 	}

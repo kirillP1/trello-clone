@@ -2,6 +2,7 @@ import { debounce } from 'lodash'
 import {
 	ChangeEvent,
 	FunctionComponent,
+	memo,
 	useCallback,
 	useEffect,
 	useState,
@@ -15,7 +16,7 @@ interface CanbanStepProps {
 	col: IKanbanCol
 }
 
-const CanbanStep: FunctionComponent<CanbanStepProps> = ({ col }) => {
+const CanbanStep: FunctionComponent<CanbanStepProps> = memo(({ col }) => {
 	const dispatch = useDispatch<AppDispatch>()
 
 	const [value, setValue] = useState<string>(col.name as string)
@@ -46,6 +47,6 @@ const CanbanStep: FunctionComponent<CanbanStepProps> = ({ col }) => {
 			<span className='text-gray-500 ml-1'>{col.cards.length}</span>
 		</div>
 	)
-}
+})
 
 export default CanbanStep

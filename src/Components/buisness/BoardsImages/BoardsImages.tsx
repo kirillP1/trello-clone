@@ -48,7 +48,7 @@ const BoardImages: FunctionComponent<BoardImagesProps> = ({
 				<div className='absolute inset-0 w-full h-full  bg-gray-400'></div>
 				{image && (
 					<img
-						src={image.urls.regular}
+						src={image.urls.small}
 						alt='Random'
 						className='absolute inset-0 w-full h-full object-cover'
 					/>

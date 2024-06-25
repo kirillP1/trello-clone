@@ -26,7 +26,7 @@ const CreateBoardModal: FunctionComponent<CreateBoardModalProps> = () => {
 				onClick={() => dispatch(setCreateBoardModal(false))}
 			>
 				<div
-					className='bg-white w-1/2 h-auto rounded-md shadow-md shadow-black/30 relative flex justify-center items-center py-20'
+					className='bg-white w-2/3 xl:w-1/2 h-auto rounded-md shadow-md shadow-black/30 relative flex justify-center items-center py-20'
 					onClick={handleModalClick}
 				>
 					<CreateBoardForm />

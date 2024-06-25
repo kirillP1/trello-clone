@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import boardsSlice from './slices/boards.slice'
 import cardsSlice from './slices/cards.slice'
 import kanbanColsSlice from './slices/kanbanCols.slice'
+import mobileSlice from './slices/mobile.slice'
 import modalsSlice from './slices/modals.slice'
 import projectsSlice from './slices/projects.slice'
 
@@ -12,6 +13,7 @@ export const store = configureStore({
 		kanbanCols: kanbanColsSlice,
 		cards: cardsSlice,
 		projects: projectsSlice,
+		mobile: mobileSlice,
 	},
 })
 

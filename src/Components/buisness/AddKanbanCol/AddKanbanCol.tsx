@@ -1,10 +1,10 @@
-import { FunctionComponent, useState } from 'react'
+import { FunctionComponent, memo, useState } from 'react'
 import AddKanbanColButton from '../../UI/buttons/AddKanbanColButton/AddKanbanColButton'
 import AddKanbanColForm from '../AddKanbanColForm/AddKanbanColForm'
 
 interface AddKanbanColProps {}
 
-const AddKanbanCol: FunctionComponent<AddKanbanColProps> = () => {
+const AddKanbanCol: FunctionComponent<AddKanbanColProps> = memo(() => {
 	const [showForm, setShowForm] = useState<boolean>(false)
 
 	return (
@@ -15,6 +15,6 @@ const AddKanbanCol: FunctionComponent<AddKanbanColProps> = () => {
 			<AddKanbanColButton onClickHandler={setShowForm} />
 		</div>
 	)
-}
+})
 
 export default AddKanbanCol

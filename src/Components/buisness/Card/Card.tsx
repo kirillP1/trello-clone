@@ -1,4 +1,4 @@
-import { FunctionComponent, useRef } from 'react'
+import { FunctionComponent, memo, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ICard } from '../../../@types/ICard'
 import { IKanbanCol } from '../../../@types/IKanbanCol'
@@ -20,62 +20,57 @@ interface CardProps {
 	setCurrentCard: (card: ICard | null) => void
 }
 
-const Card: FunctionComponent<CardProps> = ({
-	card,
-	col,
-	currentCol,
-	setCurrentCol,
-	currentCard,
-	setCurrentCard,
-}) => {
-	const dispatch = useDispatch<AppDispatch>()
+const Card: FunctionComponent<CardProps> = memo(
+	({ card, col, currentCol, setCurrentCol, currentCard, setCurrentCard }) => {
+		const dispatch = useDispatch<AppDispatch>()
 
-	const kanbanCols: IKanbanCol[] = useSelector(
-		(state: RootState) => state.kanbanCols.kanbanCols
-	)
+		const kanbanCols: IKanbanCol[] = useSelector(
+			(state: RootState) => state.kanbanCols.kanbanCols
+		)
 
-	const cardRef = useRef<HTMLDivElement>(null)
+		const cardRef = useRef<HTMLDivElement>(null)
 
-	function cardClickHandler() {
-		dispatch(setCardModal(true))
-		dispatch(setCurrentModalCard(card))
+		function cardClickHandler() {
+			dispatch(setCardModal(true))
+			dispatch(setCurrentModalCard(card))
+		}
+
+		return (
+			<div
+				draggable={true}
+				onDragStart={e =>
+					cardDragStartHandler(
+						e,
+						card,
+						col,
+						setCurrentCard,
+						setCurrentCol,
+						cardRef
+					)
+				}
+				onDragLeave={e => cardDragLeaveHandler(e)}
+				onDragEnd={e =>
+					cardDragEndHandler(e, setCurrentCard, setCurrentCol, cardRef)
+				}
+				onDragOver={e => cardDragOverHandler(e, currentCard)}
+				onDrop={e =>
+					cardDropHandler(
+						e,
+						dispatch,
+						{ col, currentCol },
+						{ kanbanCols },
+						{ card, currentCard, setCurrentCard }
+					)
+				}
+				onClick={() => cardClickHandler()}
+				data-name='card'
+				className='card p-4 font-semibold border-solid border-gray-200 border-2 transition-all duration-200 rounded-md mb-2 shadow-md shadow-gray-200 hover:border-blue-300 hover:shadow-blue-200'
+				ref={cardRef}
+			>
+				{card.name}
+			</div>
+		)
 	}
-
-	return (
-		<div
-			draggable={true}
-			onDragStart={e =>
-				cardDragStartHandler(
-					e,
-					card,
-					col,
-					setCurrentCard,
-					setCurrentCol,
-					cardRef
-				)
-			}
-			onDragLeave={e => cardDragLeaveHandler(e)}
-			onDragEnd={e =>
-				cardDragEndHandler(e, setCurrentCard, setCurrentCol, cardRef)
-			}
-			onDragOver={e => cardDragOverHandler(e, currentCard)}
-			onDrop={e =>
-				cardDropHandler(
-					e,
-					dispatch,
-					{ col, currentCol },
-					{ kanbanCols },
-					{ card, currentCard, setCurrentCard }
-				)
-			}
-			onClick={() => cardClickHandler()}
-			data-name='card'
-			className='card p-4 font-semibold border-solid border-gray-200 border-2 transition-all duration-200 rounded-md mb-2 shadow-md shadow-gray-200 hover:border-blue-300 hover:shadow-blue-200'
-			ref={cardRef}
-		>
-			{card.name}
-		</div>
-	)
-}
+)
 
 export default Card

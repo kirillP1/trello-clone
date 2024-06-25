@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react'
+import { FunctionComponent, memo } from 'react'
 import { FaPlusCircle } from 'react-icons/fa'
 import { useDispatch } from 'react-redux'
 import { setCreateProjectModal } from '../../../../redux/slices/modals.slice'
@@ -6,7 +6,7 @@ import { AppDispatch } from '../../../../redux/store'
 
 interface AddProjectButtonProps {}
 
-const AddProjectButton: FunctionComponent<AddProjectButtonProps> = () => {
+const AddProjectButton: FunctionComponent<AddProjectButtonProps> = memo(() => {
 	const dispatch = useDispatch<AppDispatch>()
 
 	function clickHandler() {
@@ -23,6 +23,6 @@ const AddProjectButton: FunctionComponent<AddProjectButtonProps> = () => {
 			<FaPlusCircle />
 		</button>
 	)
-}
+})
 
 export default AddProjectButton
