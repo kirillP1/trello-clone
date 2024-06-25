@@ -44,7 +44,7 @@ const CardModalHeader: FunctionComponent<CardModalHeaderProps> = () => {
 
 	return (
 		<div className='flex mb-10 w-full'>
-			<MdOutlineInput className='mt-3 mr-3 text-gray-700' />
+			<MdOutlineInput className='mt-3 mr-2 sm:mr-3 text-gray-700' />
 			<div className='w-full mr-10'>
 				<input
 					className='text-xl transition-all duration-100 font-bold text-gray-700 w-full resize-none h-10 focus:bg-gray-200 px-1 py-1 -ml-1'

@@ -10,13 +10,13 @@ const CardModalBody: FunctionComponent<CardModalBodyProps> = ({
 	deleteCardHandler,
 }) => {
 	return (
-		<div className='flex'>
-			<div className='w-9/12 flex pr-4'>
-				<MdOutlineDescription className='mt-1.5 mr-3 text-gray-700' />
+		<div className='block sm:flex'>
+			<div className='w-full sm:w-9/12 flex sm:pr-4'>
+				<MdOutlineDescription className='mt-1.5 mr-1 sm:mr-3 text-gray-700 sm:block hidden' />
 
 				<CardModalBodyForm />
 			</div>
-			<div className='w-3/12 '>
+			<div className='w-full sm:w-3/12 '>
 				<h5 className='text-sm font-bold text-gray-700 leading-7 mb-2'>
 					Actions
 				</h5>

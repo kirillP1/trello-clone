@@ -39,7 +39,7 @@ const CardModal: FunctionComponent<CardModalProps> = () => {
 				onClick={() => closeCardModalHandler()}
 			>
 				<div
-					className='bg-white w-2/3 xl:w-1/2 h-auto rounded-md shadow-md shadow-black/30 relative p-5'
+					className='bg-white w-3/4 sm:w-2/3 xl:w-1/2 h-auto rounded-md shadow-md shadow-black/30 relative p-5'
 					onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
 				>
 					<CardModalHeader />
