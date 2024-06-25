@@ -38,9 +38,8 @@ const Card: FunctionComponent<CardProps> = memo(
 		return (
 			<div
 				draggable={true}
-				onDragStart={e =>
+				onDragStart={() =>
 					cardDragStartHandler(
-						e,
 						card,
 						col,
 						setCurrentCard,
