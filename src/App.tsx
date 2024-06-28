@@ -17,7 +17,7 @@ function App() {
 
 	return (
 		<>
-			<div className='App flex flex-col h-screen'>
+			<div className='App flex flex-col h-screen' data-testid='App'>
 				<Header />
 				<div className='flex-1 flex relative'>
 					<SideBar />

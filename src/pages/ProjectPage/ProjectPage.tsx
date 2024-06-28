@@ -18,7 +18,7 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = memo(() => {
 	const memoProjectsBoards = useMemo(() => projectsBoards, [projectsBoards])
 
 	return (
-		<div className='py-5 px-10 pb-48 pt-0'>
+		<div className='py-5 px-10 pb-48 pt-0' data-testid='projectPage'>
 			<ProjectHeader projectId={Number(memoProjectId)} />
 			<ProjectPageTitle />
 			<BoardsOnProjectPage projectsBoards={memoProjectsBoards} />

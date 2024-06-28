@@ -4,7 +4,10 @@ interface HomeProps {}
 
 const Home: FunctionComponent<HomeProps> = memo(() => {
 	return (
-		<div className='flex items-center justify-center w-2/3 h-full m-auto py-8'>
+		<div
+			className='flex items-center justify-center w-2/3 h-full m-auto py-8'
+			data-testid='homePage'
+		>
 			<div className='text-gray-700 text-center'>
 				<h1 className='text-6xl font-bold mb-5'>
 					<span className='text-blue-700'>Try it now</span> - free and

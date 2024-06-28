@@ -5,15 +5,15 @@ import { MemoryRouter } from 'react-router-dom'
 import MainRoutes from '../../Routes/MainRoutes/MainRoutes'
 import { createReduxStore } from '../../redux/store'
 
-export const renderTestApp = (
+export const renderMainRouter = (
 	component: ReactNode,
-	options = { initialState: {}, route: '/' }
+	route = '/'
 ): RenderResult => {
-	const store = createReduxStore(options?.initialState)
+	const store = createReduxStore({})
 
 	return render(
 		<Provider store={store}>
-			<MemoryRouter initialEntries={[options?.route]}>
+			<MemoryRouter initialEntries={[route]}>
 				<MainRoutes />
 				{component}
 			</MemoryRouter>
