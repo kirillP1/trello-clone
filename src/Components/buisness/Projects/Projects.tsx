@@ -19,7 +19,7 @@ const Projects: FunctionComponent<ProjectsProps> = memo(() => {
 
 	const dispatch = useDispatch<AppDispatch>()
 
-	const closeHandler = useCallback(
+	const closeProjectHandler = useCallback(
 		() => (e: React.MouseEvent<SVGElement>, deleteProjectId: number) => {
 			e.stopPropagation()
 			e.preventDefault()
@@ -42,7 +42,7 @@ const Projects: FunctionComponent<ProjectsProps> = memo(() => {
 							key={project.id}
 							projectId={project.id}
 							projectName={project.name}
-							closeHandler={closeHandler}
+							closeHandler={closeProjectHandler}
 						/>
 					))}
 				</ul>

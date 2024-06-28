@@ -28,6 +28,7 @@ const SidebarProjectLink: FunctionComponent<SidebarProjectLinkProps> = memo(
 				key={projectId}
 				to={`/project/${projectId}`}
 				className='sidebar-link flex justify-between'
+				data-testid='sidebar-project-link'
 				onClick={clickHandler}
 			>
 				<div className='inline-block'>
@@ -36,6 +37,7 @@ const SidebarProjectLink: FunctionComponent<SidebarProjectLinkProps> = memo(
 				</div>
 
 				<IoMdClose
+					data-testid='closeButton'
 					className='text-2xl transition-all duration-200 text-gray-500 hover:cursor-pointer hover:text-black hover:scale-110'
 					onClick={e => closeHandler(e, projectId)}
 				/>
